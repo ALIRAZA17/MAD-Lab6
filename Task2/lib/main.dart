@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
       ),
       home: const SavedSuggestionsScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -28,33 +29,32 @@ class SavedSuggestionsScreen extends StatefulWidget {
 
 class _SavedSuggestionsScreenState extends State<SavedSuggestionsScreen> {
   final List<String> savedSuggestions = [
-    "Tiger",
-    "Elephant",
-    "Lion",
-    "Giraffe",
-    "Zebra",
-    "Monkey",
-    "Panda",
-    "Kangaroo",
-    "Cheetah",
-    "Dolphin",
-    "Polar Bear",
-    "Koala",
-    "Rhinoceros",
-    "Hippopotamus",
-    "Gorilla",
-    "Penguin",
-    "Jaguar",
-    "Sloth",
-    "Crocodile",
-    "Orangutan",
-    "Chimpanzee",
-    "Ostrich",
-    "Octopus",
-    "Bald Eagle",
-    "Raccoon",
+    "Sunflower",
+    "Mountain",
+    "Coffee",
+    "Galaxy",
+    "Waterfall",
+    "Rainbow",
+    "Sushi",
+    "Campfire",
+    "Lighthouse",
+    "Dragonfly",
+    "Whale",
+    "Fireworks",
+    "Butterfly",
+    "Hot Air Balloon",
+    "Thunderstorm",
+    "Maple Tree",
+    "Desert Oasis",
+    "Northern Lights",
+    "Moonlight",
+    "Crystal",
+    "Space Shuttle",
+    "Tornado",
+    "Aurora",
+    "Rainforest",
+    "Volcano"
   ];
-
   List<bool> isSelected = List.generate(25, (_) => false);
 
   bool anyItemSelected() {
@@ -76,10 +76,17 @@ class _SavedSuggestionsScreenState extends State<SavedSuggestionsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Saved Suggestions'),
+        title: const Text(
+          'Saved Suggestions',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(
             icon: const Icon(Icons.delete),
+            color: Colors.white,
             onPressed: () {
               if (anyItemSelected()) {
                 _showConfirmationDialog();
