@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
       ),
       home: const SavedSuggestionsScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -60,7 +61,7 @@ class _SavedSuggestionsScreenState extends State<SavedSuggestionsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Saved Suggestions'),
-        elevation: 2,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: ListView.builder(
         itemCount: savedSuggestions.length,
