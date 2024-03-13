@@ -60,7 +60,12 @@ class _SavedSuggestionsScreenState extends State<SavedSuggestionsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Saved Suggestions'),
+        title: const Text(
+          'Saved Suggestions',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: ListView.builder(
