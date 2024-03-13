@@ -5,7 +5,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class SavedSuggestionsScreen extends StatefulWidget {
-  const SavedSuggestionsScreen({super.key});
+  const SavedSuggestionsScreen({Key? key}) : super(key: key);
 
   @override
   State<SavedSuggestionsScreen> createState() => _SavedSuggestionsScreenState();
@@ -121,16 +121,29 @@ class _SavedSuggestionsScreenState extends State<SavedSuggestionsScreen> {
   }
 
   Future<void> _showConfirmationDialog() async {
+    List<String> selectedItems = [];
+    for (int i = 0; i < savedSuggestions.length; i++) {
+      if (isSelected[i]) {
+        selectedItems.add(savedSuggestions[i]);
+      }
+    }
+
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Delete Selected Items?'),
-          content: const SingleChildScrollView(
+          content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Are you sure you want to delete the selected items?'),
+                const Text(
+                    'Are you sure you want to delete the following items?'),
+                const SizedBox(height: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: selectedItems.map((item) => Text(item)).toList(),
+                ),
               ],
             ),
           ),
